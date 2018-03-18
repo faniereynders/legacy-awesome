@@ -1,0 +1,22 @@
+﻿@page
+@model Awesome.Pages.Customers.IndexModel
+
+<form method="post">
+    Search:
+    <input asp-for="@Model.Query" type="text" size="20" />
+    <input type="submit" value="Submit" />
+</form>
+
+<table border="1" width="100%">
+    <tr>
+        <th>Company Name</th>
+        <th>Contact Name</th>
+    </tr>
+    @foreach (var customer in Model.Items)
+    {
+        <tr>
+            <td>@customer.CompanyName</td>
+            <td>@customer.ContactName</td>
+        </tr>
+    }
+</table>
