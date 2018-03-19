@@ -1,5 +1,19 @@
-﻿<div>
-    <a asp-page="/default/index">Home</a>
-    <a asp-page="/customers/index">Customers</a>
-    <a asp-controller="Orders" asp-action="Index">Orders</a>
-</div>
+﻿<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Awesome</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/default/index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/customers/index">Customers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Orders" asp-action="Index">Orders</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

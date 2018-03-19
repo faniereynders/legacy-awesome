@@ -6,17 +6,18 @@
     <%
 set conn=Server.CreateObject("ADODB.Connection")
 
-conn.Open("Provider=SQLOLEDB;Server=.\sqlexpress;Database=test;Trusted_Connection=yes;")
+conn.Open("Provider=SQLNCLI11.1;Server=(localdb)\mssqllocaldb;Database=test;Trusted_Connection=yes;")
 set rs = Server.CreateObject("ADODB.recordset")
 sql="SELECT Companyname, Contactname FROM Customers "
 
     %>
 
+    <h2>Customers</h2>
 
-    <form method="post">
+    <form method="post" class="form-inline">
         Search:
-        <input type="text" name="searchText" size="20" />
-        <input type="submit" value="Submit" />
+        <input placeholder="Search" class="form-control" type="text" name="searchText" size="20" />
+        <input type="submit" class="btn btn-default" value="Submit" />
     </form>
     <%
 dim searchText
@@ -28,7 +29,7 @@ End If
     rs.Open sql, conn
     %>
 
-    <table border="1" width="100%">
+    <table class="table">
         <tr>
             <%for each x in rs.Fields
     response.write("<th>" & x.name & "</th>")

@@ -5,14 +5,13 @@
 <html>
 <head runat="server">
     <title></title>
-    <asp:ContentPlaceHolder id="head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <div>
-
-        <!-- #Include file="menu.html" -->
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server" />
-    </div>
+    <!-- #Include file="menu.html" -->
+    <main role="main" class="container">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+    </main>
 </body>
 </html>

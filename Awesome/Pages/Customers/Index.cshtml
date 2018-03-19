@@ -1,13 +1,13 @@
 ﻿@page
 @model Awesome.Pages.Customers.IndexModel
 
-<form method="post">
-    Search:
-    <input asp-for="@Model.Query" type="text" size="20" />
-    <input type="submit" value="Submit" />
+<h2>Customers</h2>
+<form method="post" class="form-inline">
+    <input placeholder="Search" class="form-control" asp-for="@Model.Query" type="text" size="20" />
+    <input class="btn btn-default" type="submit" value="Submit" />
 </form>
 
-<table border="1" width="100%">
+<table class="table">
     <tr>
         <th>Company Name</th>
         <th>Contact Name</th>

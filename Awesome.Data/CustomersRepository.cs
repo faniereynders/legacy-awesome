@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 
-namespace Legacy.Data
+namespace Awesome.Data
 {
     public class CustomersRepository : ICustomersRepository
     {

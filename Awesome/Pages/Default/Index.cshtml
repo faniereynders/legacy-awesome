@@ -2,9 +2,10 @@
 @model Awesome.Pages.Default.IndexModel
 
 <h2>Welcome!</h2>
-<h3>
-    Total of @Model.ProductCount
-    products ordered amounting to EUR
-    @Model.OrdersTotal
-</h3>
-
+<div class="alert alert-primary" role="alert">
+        Total of <strong>
+    @Model.ProductCount
+        products
+    </strong> ordered amounting to <strong>EUR
+        @Model.OrdersTotal</strong>
+</div>

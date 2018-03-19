@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Legacy.Data
+namespace Awesome.Data
 {
     public class Customer
     {

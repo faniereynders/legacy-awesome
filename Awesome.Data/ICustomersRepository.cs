@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Legacy.Data
+namespace Awesome.Data
 {
     public interface ICustomersRepository
     {

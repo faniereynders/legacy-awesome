@@ -5,11 +5,11 @@ namespace Awesome.Controllers
 {
     public class OrdersController : Controller
     {
-        private readonly OrdersRepository ordersRepository;
+        private readonly IOrdersRepository ordersRepository;
 
-        public OrdersController()
+        public OrdersController(IOrdersRepository ordersRepository)
         {
-            ordersRepository = new OrdersRepository(@"Server=.\sqlexpress;Database=test;Trusted_Connection=yes;");
+            this.ordersRepository = ordersRepository;
         }
 
         public ActionResult Create()

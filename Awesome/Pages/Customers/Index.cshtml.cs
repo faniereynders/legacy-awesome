@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Legacy.Data;
+﻿using System.Collections.Generic;
+using Awesome.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -10,14 +7,14 @@ namespace Awesome.Pages.Customers
 {
     public class IndexModel : PageModel
     {
-        private readonly CustomersRepository customerRepo;
+        private readonly ICustomersRepository customerRepository;
         public IEnumerable<Customer> Items { get; set; }
 
         [BindProperty]
         public string Query { get; set; }
-        public IndexModel()
+        public IndexModel(ICustomersRepository customerRepository)
         {
-            customerRepo = new CustomersRepository(@"Server=.\sqlexpress;Database=test;Trusted_Connection=yes;");
+            this.customerRepository = customerRepository;
         }
 
         public void OnGet()
@@ -31,7 +28,7 @@ namespace Awesome.Pages.Customers
 
         private void LoadCustomers()
         {
-            Items = customerRepo.GetCustomers(Query);
+            Items = customerRepository.GetCustomers(Query);
         }
 
 

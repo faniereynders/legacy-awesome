@@ -107,7 +107,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Config.cs" />
-    <Compile Include="Controllers\LookupsController.cs" />
+    <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -153,7 +153,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>64950</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

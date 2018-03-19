@@ -2,13 +2,15 @@
 
 
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <h2>Welcome!</h2>
-   <h3>Total of <asp:Label ID="lblProductCount" runat="server" Text=""></asp:Label> 
-       products ordered amounting to EUR 
-       <asp:Label ID="lblOrdersTotal" runat="server" Text=""></asp:Label>
-   </h3>
-    
+    <div class="alert alert-primary" role="alert">
+        Total of <strong>
+            <asp:Label ID="lblProductCount" runat="server" Text=""></asp:Label></strong>
+        products ordered amounting to <strong>EUR 
+       <asp:Label ID="lblOrdersTotal" runat="server" Text=""></asp:Label></strong>
+    </div>
+
 </asp:Content>
 <script runat="server">
     protected void Page_Load(object sender, EventArgs e)
