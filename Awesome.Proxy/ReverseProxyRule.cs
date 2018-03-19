@@ -21,35 +21,34 @@ namespace Awesome.Proxy
                 .RequestServices
                 .GetService<IConfiguration>();
 
-            var rules = config.GetSection("Proxy:Rules").Get<string[]>();
-            var destinationUrl = config["Proxy:DestinationUrl"];
+            var proxies = config.GetSection("Proxies").Get<ProxyConfiguration[]>();
 
-            var request = context.HttpContext.Request;
-            //var host = request.Host;
-
-            foreach (var path in rules)
+            foreach (var proxy in proxies)
             {
-                var regex = new Regex(path, RegexOptions.IgnoreCase);
-                if (regex.IsMatch(request.Path))
+                var request = context.HttpContext.Request;
+                if (proxy.Rules != null)
                 {
-                    var uri = new Uri($"{destinationUrl}/{request.Path}{request.QueryString}");
-                    var req = context.HttpContext.CreateProxyHttpRequest(uri);
+                    foreach (var path in proxy.Rules)
+                    {
+                        var regex = new Regex(path, RegexOptions.IgnoreCase);
+                        if (regex.IsMatch(request.Path))
+                        {
+                            var uri = new Uri($"{proxy.DestinationUrl}/{request.Path}{request.QueryString}");
+                            var req = context.HttpContext.CreateProxyHttpRequest(uri);
 
-                    var client = new HttpClient();
-                    var result = client.SendAsync(req).Result.Content.ReadAsStringAsync().Result;
-                    context.HttpContext.Response.WriteAsync(result);
-                    context.Result = RuleResult.EndResponse; // Do not continue processing the request        
-                    return;
+                            var client = new HttpClient();
+                            var response = client.SendAsync(req).Result;
+                            context.HttpContext.CopyProxyHttpResponse(response).Wait();
 
+                            context.Result = RuleResult.EndResponse; 
+                            return;
+
+                        }
+                    }
                 }
-            }
+            }          
+            
             context.Result = RuleResult.ContinueRules;
-
-
-            //    context.StaticFileProvider.
-
-
-
         }
     }
 }
