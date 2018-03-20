@@ -1,11 +1,11 @@
 ﻿@page
-@model Awesome.Pages.Default.IndexModel
-
+@inject Awesome.Data.IOrdersRepository ordersRepository
+@{
+    var aggregates = ordersRepository.GetOrdersAggregate();
+}
 <h2>Welcome!</h2>
 <div class="alert alert-primary" role="alert">
-        Total of <strong>
-    @Model.ProductCount
-        products
-    </strong> ordered amounting to <strong>EUR
-        @Model.OrdersTotal</strong>
+    Total of <strong>@aggregates.productCount</strong>
+    products ordered amounting to <strong>EUR @aggregates.ordersTotal</strong>
 </div>
+
